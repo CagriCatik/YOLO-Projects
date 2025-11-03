@@ -1,0 +1,26 @@
+data:
+  zip_path: ""        # e.g., /path/to/data.zip; if empty, prepare step is skipped
+  out_dir: "data"
+  train_pct: 0.9
+
+train:
+  data_yaml: "data/data.yaml"  # replaced automatically if prepare runs
+  model: "yolo11s.pt"
+  epochs: 60
+  imgsz: 640
+  project: "runs"
+
+predict:
+  enabled: true
+  save: true
+  imgsz: 640
+  project: "runs"
+  name: "predict"
+
+export:
+  enabled: true
+  name: "my_model"
+  out_dir: "artifacts"
+
+plots:
+  out_dir: "artifacts/plots"

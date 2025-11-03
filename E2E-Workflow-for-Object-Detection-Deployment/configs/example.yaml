@@ -1,0 +1,4 @@
+# Placeholder for future hyperparameter configs
+epochs: 60
+imgsz: 640
+model: yolo11s.pt

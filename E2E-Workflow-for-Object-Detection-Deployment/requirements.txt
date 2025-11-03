@@ -1,0 +1,11 @@
+# Core runtime
+# torch/torchvision will be installed by ultralytics, but you may prefer a CUDA wheel:
+# pip install --upgrade torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+ultralytics>=8.2.0
+opencv-python
+numpy>=1.24
+PyYAML>=6.0
+typer>=0.12
+rich>=13.7
+matplotlib>=3.7

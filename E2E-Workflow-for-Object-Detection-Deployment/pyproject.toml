@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yolo-project-colabized"
+version = "0.1.0"
+description = "Local project derived from Colab notebook: Train and deploy YOLO with Ultralytics."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{name="Your Name"}]
+dependencies = [
+    "ultralytics>=8.2.0",
+    "opencv-python",
+    "numpy>=1.24",
+    "PyYAML>=6.0",
+    "typer>=0.12",
+    "rich>=13.7",
+]
+
+[project.scripts]
+yolo-proj = "yolo_project.cli:app"
