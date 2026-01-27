@@ -1,0 +1,19 @@
+# Core YOLO dependencies
+ultralytics  # YOLOv8, YOLOv9, YOLOv10, YOLOv11
+opencv-python # Image and video processing
+opencv-contrib-python # Extended OpenCV features
+
+# Visualization and data handling
+matplotlib
+numpy
+pandas
+PyYAML
+tensorboard
+
+# Optional: GPU acceleration (standard tools will often pull the right torch version)
+# If you have an NVIDIA GPU, ensure CUDA is installed and install torch separately 
+# or let ultralytics handle it.
+torch
+torchvision
+torchaudio
+
