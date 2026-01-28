@@ -152,7 +152,9 @@ Distant traffic signs can be challenging for "Nano" models. To improve detection
 3.  **Model Scale**: If accuracy is still low, consider changing the `model_variant` in `config.json` to `yolo11s.pt` (Small) or `yolo11m.pt` (Medium) and retraining.
 
 ## Extended Documentation
+*   **[Project Architecture](docs/project_architecture.md)**: Technical deep-dive into the system design.
 *   **[Metrics Guide](docs/metrics_guide.md)**: Deep dive into mAP, Precision, and Recall.
+*   **[Hyperparameter Tuning Guide](docs/hyperparameter_tuning.md)**: Understanding and optimizng learning parameters.
 *   **[Implementation Plan](docs/implementation_plan.md)**: The roadmap for this project.
 *   **[Labeling Guideline](docs/labeling_guideline.md)**: How to prepare new data using CVAT.
 
