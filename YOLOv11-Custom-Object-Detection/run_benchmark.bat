@@ -1,5 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo Starting Speed Benchmark (PT vs ONNX)...
-call .\venv\Scripts\activate.bat
-python scripts/benchmark_comparison.py
+.\venv\Scripts\python.exe -m scripts.benchmark_comparison
 pause

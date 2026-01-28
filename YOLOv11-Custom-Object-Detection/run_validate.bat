@@ -1,5 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo Running Model Validation...
-call .\venv\Scripts\activate.bat
-python scripts/validate_model.py
+.\venv\Scripts\python.exe -m scripts.validate_model
 pause

@@ -1,32 +1,42 @@
 import os
 from ultralytics import YOLO
+from scripts.logger_utils import setup_production_logging
+
+# Initialize Production Logger
+logger = setup_production_logging("export_model")
 
 def export_to_onnx():
-    # 1. Path to the best trained weights
-    weights_path = os.path.abspath("runs/detect/traffic_sign_detection/yolo11_custom/weights/best.pt")
+    # 1. Path Configuration via Environment Variables
+    weights_path = os.getenv("MODEL_PATH", os.path.abspath("runs/detect/traffic_sign_detection/yolo11_custom/weights/best.pt"))
 
     if not os.path.exists(weights_path):
-        print(f"Error: Trained weights not found at {weights_path}")
-        print("Please wait for training to finish before exporting.")
+        logger.error(f"Trained weights not found at {weights_path}")
         return
 
-    print(f"--- Loading Model for Export: {weights_path} ---")
-    model = YOLO(weights_path)
+    logger.info(f"--- Loading Model for Export: {weights_path} ---")
+    try:
+        model = YOLO(weights_path)
+    except Exception as e:
+        logger.error(f"Failed to load model: {str(e)}")
+        return
 
     # 2. Export the model
     # half=True exports to FP16 (Half Precision) - Much faster on RTX 3080
-    print("--- Starting Export to ONNX (FP16 Optimized) ---")
-    onnx_path = model.export(
-        format='onnx', 
-        simplify=True, 
-        dynamic=False,
-        half=True 
-    )
-    
-    print("\n" + "="*50)
-    print("--- Export Complete ---")
-    print(f"  ONNX Model Saved: {onnx_path}")
-    print("="*50)
+    logger.info("--- Starting Export to ONNX (FP16 Optimized) ---")
+    try:
+        onnx_path = model.export(
+            format='onnx', 
+            simplify=True, 
+            dynamic=False,
+            half=True 
+        )
+        
+        logger.info("="*50)
+        logger.info("--- Export Complete ---")
+        logger.info(f"  ONNX Model Saved: {onnx_path}")
+        logger.info("="*50)
+    except Exception as e:
+        logger.error(f"Export failed: {str(e)}", exc_info=True)
 
 if __name__ == "__main__":
     export_to_onnx()

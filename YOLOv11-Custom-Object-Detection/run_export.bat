@@ -1,5 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo Exporting Best Weights to FP16 ONNX...
-call .\venv\Scripts\activate.bat
-python scripts/export_model.py
+.\venv\Scripts\python.exe -m scripts.export_model
 pause

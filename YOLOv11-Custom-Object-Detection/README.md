@@ -1,3 +1,5 @@
+<div align="center">
+
 # YOLO11 Traffic Sign Detection Pipeline
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -5,7 +7,12 @@
 [![GPU Accelerated](https://img.shields.io/badge/GPU-RTX%203080-green.svg)](https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3080/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-lightgrey.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
-A production-grade computer vision pipeline designed for high-accuracy traffic sign recognition. Leveraging **YOLO11** (Ultralytics) and optimized for **NVIDIA GPU** acceleration with native **ONNX** support.
+A production-grade computer vision pipeline designed for high-accuracy traffic sign recognition.
+
+Leveraging <strong>YOLO11</strong> (Ultralytics) and optimized for <strong>NVIDIA GPU</strong> acceleration with native <strong>ONNX</strong> support.
+
+</div>
+
 
 ---
 
@@ -62,7 +69,9 @@ No terminal complexity required. Use these one-click shortcuts:
 
 | Shortcut | Description |
 | :--- | :--- |
-| **`run_live_inference.bat`** | **NEW!** Launches real-time detection using your webcam. |
+| **`run_menu.bat`** | **NEW!** A master menu to access all tools from one place. |
+| **`run_label_check.bat`** | Visualizes random dataset samples to verify boxes and normalization. |
+| **`run_live_inference.bat`** | Launches real-time detection using your webcam. |
 | **`run_train.bat`** | Launches the master training pipeline using `config.json`. |
 | **`run_validate.bat`** | Generates accuracy reports (P, R, mAP) on the validation set. |
 | **`run_export.bat`** | Converts your PyTorch model to an optimized FP16 ONNX format. |
@@ -128,6 +137,19 @@ Hyperparameters are decoupled from code in `config.json`.
   }
 }
 ```
+
+## Troubleshooting
+### Distant/Small Objects Not Detected?
+Distant traffic signs can be challenging for "Nano" models. To improve detection:
+1.  **Lower Confidence Threshold**: The default is `0.25`. You can try `0.15` by running:
+    ```powershell
+    $env:MIN_CONFIDENCE = "0.15"; .\run_live_inference.bat
+    ```
+2.  **Increase Resolution**: If your webcam supports it, try increasing the inference size to `1280` (this will lower FPS):
+    ```powershell
+    $env:IMG_SIZE = "1280"; .\run_live_inference.bat
+    ```
+3.  **Model Scale**: If accuracy is still low, consider changing the `model_variant` in `config.json` to `yolo11s.pt` (Small) or `yolo11m.pt` (Medium) and retraining.
 
 ## Extended Documentation
 *   **[Metrics Guide](docs/metrics_guide.md)**: Deep dive into mAP, Precision, and Recall.

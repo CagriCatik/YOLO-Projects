@@ -1,5 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo Starting YOLO Training Pipeline...
-call .\venv\Scripts\activate.bat
-python train_pipeline.py
+.\venv\Scripts\python.exe train_pipeline.py
 pause

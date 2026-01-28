@@ -22,7 +22,7 @@ Run the master pipeline script:
 .\venv\Scripts\python.exe train_pipeline.py
 ```
 
-### 📈 What happens during training?
+### What happens during training?
 1. **Validation**: The script checks your `dataset/data.yaml` to locate images.
 2. **Download**: If `yolo11n.pt` is missing, it will download the pre-trained base.
 3. **Epoch Logs**: You will see a progress bar for every epoch with:

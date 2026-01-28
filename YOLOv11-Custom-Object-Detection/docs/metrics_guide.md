@@ -1,4 +1,4 @@
-# 📊 Understanding Object Detection Metrics
+# Understanding Object Detection Metrics
 
 This document explains the key evaluation criteria used in the YOLO pipeline to measure the performance of your traffic sign detection model.
 

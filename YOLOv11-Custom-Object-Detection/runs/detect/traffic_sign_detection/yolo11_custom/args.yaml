@@ -1,7 +1,7 @@
 task: detect
 mode: train
 model: models/yolo11n.pt
-data: C:\Users\mccat\Desktop\yolo-custom-object-detection\dataset\data.yaml
+data: C:\Users\mccat\Desktop\YOLO-Projects\YOLOv11-Custom-Object-Detection\dataset\data.yaml
 epochs: 100
 time: null
 patience: 15
@@ -106,4 +106,4 @@ auto_augment: randaugment
 erasing: 0.4
 cfg: null
 tracker: botsort.yaml
-save_dir: C:\Users\mccat\Desktop\yolo-custom-object-detection\runs\detect\traffic_sign_detection\yolo11_custom
+save_dir: C:\Users\mccat\Desktop\YOLO-Projects\YOLOv11-Custom-Object-Detection\runs\detect\traffic_sign_detection\yolo11_custom
